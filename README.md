@@ -1,21 +1,21 @@
-# gogre3d
-"go-ogre3d" is a slim wrapper for ogre3d for use in game projects that use ogre3d for graphics.
+# go-ogre3d
+"go-ogre3d" is a slim wrapper of ogre3d for use in game projects that use ogre3d for graphics.
 
 Ogre3d has a huge codebase, and we do not aim to provide a generic, complete interface to it all. Instead it will start off very small, based on developing requirements, and grow with the game project.
 
-# quickstart
-## install dependencies
+# Quickstart
+## Install dependencies
 make sure they are in the library load path (e.g. windows: on the PATH; linux: /usr/lib or similar)
 * install Ogre (http://www.ogre3d.org/ https://bitbucket.org/cabalistic/ogredeps)
 * install llcoi (https://bitbucket.org/fire/llcoi)
 
-## gogre3d
+## go-ore3d
 * fetch using 'go get'
 ```
 $ go get github.com/fire/go-ogre3d
 ```
 
-## test it
+## Test it
 you can verify that it works by running the sample included in the gogre3d sources
 ```
 $ cd $GOPATH/src/github.com/fire/go-ogre3d/sample
@@ -43,22 +43,22 @@ However, if you're somewhat familiar with Ogre and know a bit of C/C++ it should
 ## Think of the children!
 I encourage you to contribute whatever you add back to the projects - it's not an official part of Ogre, and needs the community in order to expand.
 
-# dependencies explained
+# Dependencies explained
 ## llcoi
 gogre3d is /not/ a port of ogre to golang. It's a wrapper, and in fact it's really just a really slim wrapper on top of the already slim C wrapper llcoi (https://bitbucket.org/fire/llcoi). gogre3d compiles and links only to llcoi. llcoi, however, obviously depends on Ogre (and OIS).
 
 
-## runtime dependencies
+## Runtime dependencies
 As far as gogre3d is concerned, llcoi is the only requirement. However, your application might not run if other runtime deps are missing. Obviously Ogre itself has many other dependencies. Depending on how you built llcoi, OIS, Ogre and their dependencies must be available in order to use gogre3d. Installing Ogre is way outside of this scope.
 
-### direct dependencies
+### Direct dependencies
 * llcoi
  * ogre_interface.h
  * ois_interface.h
  * libllcoi.so
 
 
-### indirect dependencies (through llcoi)
+### Indirect dependencies (through llcoi)
 * OIS
  * libOIS.so
 * Ogre
@@ -66,7 +66,7 @@ As far as gogre3d is concerned, llcoi is the only requirement. However, your app
  * (.. other run-time and compile-time dependencies ...)
 
 
-## dependency-related errors
+## Dependency-related errors
 ### llcoi not found
 ```bash
 /usr/bin/ld: cannot find -lllcoi
@@ -75,14 +75,14 @@ collect2: ld returned 1 exit status
 ```
 fix: make sure llcoi library is on the library load path
 
-### ogre not found
+### Ogre not found
 ```bash
 libllcoi.so: undefined reference to `Ogre::Root::... etc.
 ```
 fix: make sure i.e. OgreMain is on the library load path
 
 
-## custom dependency locations
+## Custom dependency locations
 gogre3d uses #cgo (which effectively uses gcc) to include and link to C header and libraries. If you want to point to custom locations of llcoi/ogre dependencies, you can use #cgo directives to do so. Refer to the golang cgo documentation for details: http://golang.org/cmd/cgo/
 
 
