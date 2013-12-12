@@ -1,5 +1,10 @@
 package main 
 
+/*
+ #cgo LDFLAGS: -lllcoi
+*/
+import "C"
+
 import (
 	"time"
 	"github.com/fire/go-ogre3d"
