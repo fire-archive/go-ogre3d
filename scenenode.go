@@ -1,4 +1,4 @@
-package gogre3d
+package ogre
 
 /* 
  #cgo LDFLAGS: -lllcoi

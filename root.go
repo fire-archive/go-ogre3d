@@ -2,7 +2,7 @@
 Ogre3d bindings for Go. Uses llcoi to bind to ogre via c.
 */
 
-package gogre3d
+package ogre
 
 /* 
  #cgo LDFLAGS: -lllcoi
