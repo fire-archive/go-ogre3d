@@ -3,7 +3,7 @@ package ogre
 /*
  #cgo LDFLAGS: -lllcoi
  #cgo CFLAGS: -I./llcoihdr
- #include "ois_interface.h"
+ #include "llcoi/ois_interface.h"
 */
 import "C"
 
