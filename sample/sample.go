@@ -2,7 +2,7 @@ package main
 
 import (
 	"time"
-	"github.com/galaktor/gogre3d"
+	"github.com/fire/go-ogre3d"
 )
 
 func main() {
