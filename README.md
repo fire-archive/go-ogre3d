@@ -1,30 +1,30 @@
 # gogre3d
-I am working on a game project using golang and intend to use Ogre3d for graphics. For this purpose I created a slim Go wrapper for ogre3d: enter "gogre3d".
+"go-ogre3d" is a slim wrapper for ogre3d for use in game projects that use ogre3d for graphics.
 
-Ogre3d has a huge codebase, and I do not aim to provide a generic, complete interface to it all. Instead it will start off very small, based on my own actual requirements, and grow with the game project.
+Ogre3d has a huge codebase, and we do not aim to provide a generic, complete interface to it all. Instead it will start off very small, based on developing requirements, and grow with the game project.
 
 # quickstart
 ## install dependencies
 make sure they are in the library load path (e.g. windows: on the PATH; linux: /usr/lib or similar)
 * install Ogre (http://www.ogre3d.org/ https://bitbucket.org/cabalistic/ogredeps)
-* install llcoi (https://bitbucket.org/galaktor/llcoi)
+* install llcoi (https://bitbucket.org/fire/llcoi)
 
 ## gogre3d
 * fetch using 'go get'
 ```
-$ go get github.com/galaktor/gogre3d
+$ go get github.com/fire/go-ogre3d
 ```
 
 ## test it
 you can verify that it works by running the sample included in the gogre3d sources
 ```
-$ cd $GOPATH/src/github.com/galaktor/gogre3d/sample
+$ cd $GOPATH/src/github.com/fire/go-ogre3d/sample
 $ go run sample.go
 ```
 
 you should see the following ogre:
 
-![sample render](https://raw.github.com/galaktor/gogre3d/master/sample/demo.gif)
+![sample render](https://raw.github.com/fire/go-ogre3d/master/sample/demo.gif)
 
 * Arrow keys: rotate head
 * Mouse X/Y axis: rotate head
