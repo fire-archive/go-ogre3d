@@ -4,7 +4,7 @@
 Ogre3d has a huge codebase, and we do not aim to provide a generic, complete interface to it all. Instead it will start off very small, based on developing requirements, and grow with the game project.
 
 # Quickstart
-## install dependencies
+## Install dependencies
 make sure they are in the library load path (e.g. windows: on the PATH; linux: /usr/lib or similar)
 * install Ogre (http://www.ogre3d.org/ https://bitbucket.org/cabalistic/ogredeps)
 * install llcoi (https://bitbucket.org/fire/llcoi)
