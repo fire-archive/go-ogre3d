@@ -4,12 +4,9 @@ Ogre3d bindings for Go. Uses llcoi to bind to ogre via c.
 
 package ogre
 
-/* 
- #cgo LDFLAGS: -lllcoi
- #cgo CFLAGS: -I./llcoihdr
- #include "llcoi/ogre_interface.h"
-// #include "llcoi/ois_interface.h"
-*/
+// #cgo LDFLAGS: -lllcoi
+// #include "llcoi/ogre_interface.h"
+
 import "C"
 
 type Root struct {
