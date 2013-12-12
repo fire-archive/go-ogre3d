@@ -1,5 +1,5 @@
 # gogre3d
-"go-ogre3d" is a slim wrapper for ogre3d for use in game projects that use ogre3d for graphics.
+"go-ogre3d" is a slim wrapper of ogre3d for use in game projects that use ogre3d for graphics.
 
 Ogre3d has a huge codebase, and we do not aim to provide a generic, complete interface to it all. Instead it will start off very small, based on developing requirements, and grow with the game project.
 
