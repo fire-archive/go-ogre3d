@@ -5,24 +5,24 @@ Ogre3d has a huge codebase, and we do not aim to provide a generic, complete int
 
 # Quickstart
 ## Install dependencies
-make sure they are in the library load path (e.g. windows: on the PATH; linux: /usr/lib or similar)
-* install Ogre (http://www.ogre3d.org/ https://bitbucket.org/cabalistic/ogredeps)
-* install llcoi (https://bitbucket.org/fire/llcoi)
+Make sure they are in the library load path (e.g. windows: on the PATH; linux: /usr/lib or similar)
+* Install Ogre (http://www.ogre3d.org/ https://bitbucket.org/cabalistic/ogredeps)
+* Install llcoi (https://bitbucket.org/fire/llcoi)
 
 ## go-ore3d
-* fetch using 'go get'
+* Fetch using 'go get'
 ```
 $ go get github.com/fire/go-ogre3d
 ```
 
 ## Test it
-you can verify that it works by running the sample included in the gogre3d sources
+You can verify that it works by running the sample included in the gogre3d sources
 ```
 $ cd $GOPATH/src/github.com/fire/go-ogre3d/sample
 $ go run sample.go
 ```
 
-you should see the following ogre:
+You should see the following ogre:
 
 ![sample render](https://raw.github.com/fire/go-ogre3d/master/sample/demo.gif)
 
@@ -45,11 +45,11 @@ I encourage you to contribute whatever you add back to the projects - it's not a
 
 # Dependencies explained
 ## llcoi
-gogre3d is /not/ a port of ogre to golang. It's a wrapper, and in fact it's really just a really slim wrapper on top of the already slim C wrapper llcoi (https://bitbucket.org/fire/llcoi). gogre3d compiles and links only to llcoi. llcoi, however, obviously depends on Ogre (and OIS).
+go-ogre3d is /not/ a port of ogre to golang. It's a wrapper, and in fact it's really just a really slim wrapper on top of the already slim C wrapper llcoi (https://bitbucket.org/fire/llcoi). gogre3d compiles and links only to llcoi. llcoi, however, obviously depends on Ogre (and OIS).
 
 
 ## Runtime dependencies
-As far as gogre3d is concerned, llcoi is the only requirement. However, your application might not run if other runtime deps are missing. Obviously Ogre itself has many other dependencies. Depending on how you built llcoi, OIS, Ogre and their dependencies must be available in order to use gogre3d. Installing Ogre is way outside of this scope.
+As far as go-ogre3d is concerned, llcoi is the only requirement. However, your application might not run if other runtime deps are missing. Obviously Ogre itself has many other dependencies. Depending on how you built llcoi, OIS, Ogre and their dependencies must be available in order to use gogre3d. Installing Ogre is way outside of this scope.
 
 ### Direct dependencies
 * llcoi
@@ -73,27 +73,26 @@ As far as gogre3d is concerned, llcoi is the only requirement. However, your app
 collect2: ld returned 1 exit status
 
 ```
-fix: make sure llcoi library is on the library load path
+Fix: make sure llcoi library is on the library load path
 
 ### Ogre not found
 ```bash
 libllcoi.so: undefined reference to `Ogre::Root::... etc.
 ```
-fix: make sure i.e. OgreMain is on the library load path
+Fix: make sure i.e. OgreMain is on the library load path
 
 
 ## Custom dependency locations
-gogre3d uses #cgo (which effectively uses gcc) to include and link to C header and libraries. If you want to point to custom locations of llcoi/ogre dependencies, you can use #cgo directives to do so. Refer to the golang cgo documentation for details: http://golang.org/cmd/cgo/
-
+go-ogre3d uses #cgo (which effectively uses gcc) to include and link to C header and libraries. If you want to point to custom locations of llcoi/ogre dependencies, you can use #cgo directives to do so. Refer to the golang cgo documentation for details: http://golang.org/cmd/cgo/
 
 # TODOs
-* better Mouse input
-* move input into "gois" package
- * subpackages for mouse/keyboard, useful for constants (gogre3d.KC_UP isn't nice, something like key.UP would be better)
-* expose more of llcoi's functionality, particularly scene/node/entity/light/camera basics
-* idiomatic Go API
-* maybe simplifiy installation including llcoi somehow? maybe provide prebuilt binaries including ogre for 'plug-n-play' effect?
+* Better Mouse input
+* Move input into "gois" package
+* Subpackages for mouse/keyboard, useful for constants (gogre3d.KC_UP isn't nice, something like key.UP would be better)
+* Expose more of llcoi's functionality, particularly scene/node/entity/light/camera basics
+* Idiomatic Go API
+* Maybe simplifiy installation including llcoi somehow? maybe provide prebuilt binaries including ogre for 'plug-n-play' effect?
 
 # License
-gogre3d is licensed under the MIT license. You can find a copy in the LICENSE file, or online at http://opensource.org/licenses/mit-license.php
+go-ogre3d is licensed under the MIT license. You can find a copy in the LICENSE file, or online at http://opensource.org/licenses/mit-license.php
 Copyright (c) 2012 Raphael Estrada (http://www.galaktor.net)
