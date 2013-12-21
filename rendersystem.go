@@ -21,3 +21,10 @@ func (r *RenderSystem) SetConfigOption(key, value string) {
 func (r *RenderSystemList) RenderSystemListSize() uint {
 	return uint(C.render_system_list_size(r.cptr))
 }
+
+func (r *RenderSystemList) RenderSystemListGet(index uint) RenderSystem {
+	var result RenderSystem
+	result.cptr = C.render_system_list_get(r.cptr, C.uint(index))
+
+	return result
+}
