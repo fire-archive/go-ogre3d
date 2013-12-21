@@ -50,6 +50,13 @@ func (r *Root) GetRenderSystemByName(name string) RenderSystem {
 	return result
 }
 
+func (r *Root) GetAvailableRenderers() RenderSystemList {
+	var result RenderSystemList
+	result.cptr = C.root_get_available_renderers(r.cptr)
+	
+	return result
+}
+
 func (r *Root) SetRenderSystem(s RenderSystem) {
 	C.set_render_system(r.cptr, s.cptr)
 }
