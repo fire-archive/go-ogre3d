@@ -6,6 +6,7 @@ package ogre
 
 // #cgo LDFLAGS: -lllcoi
 // #include "llcoi/ogre_interface.h"
+// #include "llcoi/main.h"
 import "C"
 
 type Root struct {
@@ -14,6 +15,21 @@ type Root struct {
 
 type NameValuePairList struct {
 	cptr C.NameValuePairListHandle
+}
+
+func createNameValuePairList() NameValuePairList {
+	var name NameValuePairList
+	name.cptr = C.create_name_value_pair_list()
+	return name
+}
+
+func (n *NameValuePairList) addPair(name string, value string) {
+	C.add_pair(n.cptr, C.CString(name), C.CString(value))
+}
+
+func (n *NameValuePairList) destroyNameValuePairList() {
+	C.destroy_name_value_pair_list(n.cptr)
+	n.cptr = nil
 }
 
 func NewRoot(pluginsCfg, ogreCfg, logfile string) Root {
