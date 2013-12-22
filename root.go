@@ -12,6 +12,10 @@ type Root struct {
 	cptr C.RootHandle
 }
 
+type NameValuePairList struct {
+	cptr C.NameValuePairListHandle
+}
+
 func NewRoot(pluginsCfg, ogreCfg, logfile string) Root {
 	var result Root
 	result.cptr = C.create_root(C.CString(pluginsCfg), C.CString(ogreCfg), C.CString(logfile))
@@ -70,6 +74,12 @@ func (r *Root) Initialise(createWindow bool, windowTitle string) RenderWindow {
 	var result RenderWindow
 	result.cptr = C.root_initialise(r.cptr, cbool(createWindow), C.CString(windowTitle))
 
+	return result
+}
+
+func (r *Root) CreateRenderWindow(name string, width int, height int, fullScreen bool, params NameValuePairList) RenderWindow{
+	var result RenderWindow
+	result.cptr = C.create_render_window(r.cptr, C.CString(name), C.int(width), C.int(height), cbool(fullScreen), params.cptr)
 	return result
 }
 
