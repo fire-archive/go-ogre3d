@@ -30,6 +30,10 @@ func (rw *RenderWindow) Reposition(left, top int) {
 	C.render_window_reposition(rw.cptr, C.int(left), C.int(top))
 }
 
+func (rw *RenderWindow) SetVisible(visible bool) {
+	C.render_window_set_visible(rw.cptr, cbool(visible))
+}
+
 func MessagePump() {
 	C.pump_messages()
 }
