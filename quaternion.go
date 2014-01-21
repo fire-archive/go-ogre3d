@@ -9,11 +9,15 @@ type Quaternion struct {
 	cptr C.QuaternionHandle
 }
 
-func (quat *Quaternion) FromRotationMatrix(mat Matrix3) Quaternion {
+func CreateQuaternion() Quaternion {
 	var result Quaternion
+	result.cptr = C.quaternion_create()
+	return result
+}
+
+func (quat *Quaternion) FromRotationMatrix(mat Matrix3) {
 	m := C.coiMatrix3(mat.cmat)
-	result.cptr = C.quaternion_from_rotation_matrix(&m)
-	return result	
+	C.quaternion_from_rotation_matrix(quat.cptr, &m)
 }
 
 func (quat *Quaternion) FromValues(w, x, y, z float32) Quaternion {
