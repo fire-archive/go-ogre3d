@@ -118,4 +118,14 @@ func (r *Root) LoadPlugin(name string) {
 	C.load_ogre_plugin(r.cptr, C.CString(name))
 }
 
+func (r *Root) FireFrameStarted() bool {
+	return gobool(C.root_fire_frame_started(r.cptr))
+}
 
+func (r *Root) FireFrameRenderingQueued() bool {
+	return gobool(C.root_fire_frame_rendering_queued(r.cptr))
+}
+
+func (r *Root) FireFrameEnded() bool {
+	return gobool(C.root_fire_frame_ended(r.cptr))
+}
