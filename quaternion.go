@@ -30,6 +30,12 @@ func (quat *Quaternion) ToRotationMatrix(mat *Matrix3) {
 	C.quaternion_to_rotation_matrix(quat.cptr, &mat.cmat)
 }
 
+// Sets the quaternion from an axis-angle.
+// Needs a radian and a vector for the axis.
+func (quat *Quaternion) FromAngleAxis(radian float32, vec Vector3) {
+	C.quaternion_from_angle_axis(quat.cptr, C.coiRadian(radian), vec.cptr)
+}
+
 // Get the w component of the quaternion.
 func (quat *Quaternion) W() float32 {
 	
