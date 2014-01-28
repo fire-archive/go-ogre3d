@@ -30,21 +30,25 @@ func (quat *Quaternion) ToRotationMatrix(mat *Matrix3) {
 	C.quaternion_to_rotation_matrix(quat.cptr, &mat.cmat)
 }
 
+// Get the w component of the quaternion.
 func (quat *Quaternion) W() float32 {
 	
 	return float32(C.quaternion_get_w(quat.cptr))
 }
 
+// Get the x component of the quaternion.
 func (quat *Quaternion) X() float32 {
 	
 	return float32(C.quaternion_get_x(quat.cptr))
 }
 
+// Get the y component of the quaternion.
 func (quat *Quaternion) Y() float32 {
 	
 	return float32(C.quaternion_get_y(quat.cptr))
 }
 
+// Get the z component of the quaternion.
 func (quat *Quaternion) Z() float32 {
 	
 	return float32(C.quaternion_get_z(quat.cptr))
