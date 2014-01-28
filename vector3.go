@@ -37,3 +37,52 @@ func (vec *Vector3) Zero() {
 	vec.SetY(float32(temp.y))
 	vec.SetZ(float32(temp.z))
 }
+
+func (vec *Vector3) UnitX() {
+	temp := C.vector3_UNIT_X()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) UnitY() {
+	temp := C.vector3_UNIT_Y()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) UnitZ() {
+	temp := C.vector3_UNIT_Z()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) NegativeUnitX() {
+	temp := C.vector3_NEGATIVE_UNIT_X()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) NegativeUnitY() {
+	temp := C.vector3_NEGATIVE_UNIT_Y()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) NegativeUnitZ() {
+	temp := C.vector3_NEGATIVE_UNIT_Z()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
+
+func (vec *Vector3) UnitScale() {
+	temp := C.vector3_UNIT_SCALE()
+	vec.SetX(float32(temp.x))
+	vec.SetY(float32(temp.y))
+	vec.SetZ(float32(temp.z))
+}
