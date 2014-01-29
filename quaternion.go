@@ -15,15 +15,15 @@ func CreateQuaternion() Quaternion {
 	return result
 }
 
-func (quat *Quaternion) FromRotationMatrix(mat Matrix3) {
-	m := C.coiMatrix3(mat.cmat)
-	C.quaternion_from_rotation_matrix(quat.cptr, &m)
-}
-
 func CreateQuaternionFromValues(w, x, y, z float32) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_from_values(C.coiReal(w), C.coiReal(x), C.coiReal(y), C.coiReal(z))
 	return result	
+}
+
+func (quat *Quaternion) FromRotationMatrix(mat Matrix3) {
+	m := C.coiMatrix3(mat.cmat)
+	C.quaternion_from_rotation_matrix(quat.cptr, &m)
 }
 
 func (quat *Quaternion) ToRotationMatrix(mat *Matrix3) {
@@ -58,4 +58,16 @@ func (quat *Quaternion) Y() float32 {
 func (quat *Quaternion) Z() float32 {
 	
 	return float32(C.quaternion_get_z(quat.cptr))
+}
+
+func (quat *Quaternion) MultiplyQuaternion(q Quaternion) (Quaternion) {
+	var result Quaternion
+	result.cptr = C.quaternion_multiply_quaternion(quat.cptr, q.cptr)
+	return result
+}
+
+func (quat *Quaternion) SubtractQuaternion(q Quaternion) (Quaternion) {
+	var result Quaternion
+	result.cptr = C.quaternion_subtract_quaternion(quat.cptr, q.cptr)
+	return result
 }
