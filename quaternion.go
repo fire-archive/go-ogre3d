@@ -87,3 +87,7 @@ func (quat *Quaternion) UnitInverse() (Quaternion) {
 func (quat *Quaternion) Normalise() (length float32) {
 	return float32(C.quaternion_normalise(quat.cptr))
 }
+
+func (quat *Quaternion) ToAngleAxisDegree(degree float32, axis Vector3) {
+	C.quaternion_to_angle_axis_degree(quat.cptr, C.coiDegree(degree), axis.cptr)
+}
