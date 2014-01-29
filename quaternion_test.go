@@ -26,3 +26,12 @@ func TestQuaternionSubtractQuaternion(t *testing.T) {
 		t.Errorf("Error with subtracting quaternion")
 	}
 }
+
+func TestQuaternionUnitInverse(t *testing.T) {
+	quat := CreateQuaternionFromValues(5,6,7,8)
+	fmt.Printf("Quaternion 1: %f %f %f %f\n", quat.W(), quat.X(), quat.Y(), quat.Z())
+	quat.Normalise()
+	fmt.Printf("Quaternion 1 normalised: %f %f %f %f\n", quat.W(), quat.X(), quat.Y(), quat.Z())
+	quat.UnitInverse()
+	fmt.Printf("Quaternion inverse result: %f %f %f %f\n", quat.W(), quat.X(), quat.Y(), quat.Z())	
+}

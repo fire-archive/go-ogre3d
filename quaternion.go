@@ -66,8 +66,24 @@ func (quat *Quaternion) MultiplyQuaternion(q Quaternion) (Quaternion) {
 	return result
 }
 
+func (quat *Quaternion) MultiplyScalar(s float32) (Quaternion) {
+	var result Quaternion
+	result.cptr = C.quaternion_multiply_scalar(quat.cptr, C.coiReal(s))
+	return result
+}
+
 func (quat *Quaternion) SubtractQuaternion(q Quaternion) (Quaternion) {
 	var result Quaternion
 	result.cptr = C.quaternion_subtract_quaternion(quat.cptr, q.cptr)
 	return result
+}
+
+func (quat *Quaternion) UnitInverse() (Quaternion) {
+	var result Quaternion
+	result.cptr = C.quaternion_unit_inverse(quat.cptr)
+	return result
+}
+
+func (quat *Quaternion) Normalise() (length float32) {
+	return float32(C.quaternion_normalise(quat.cptr))
 }
