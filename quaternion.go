@@ -20,7 +20,7 @@ func (quat *Quaternion) FromRotationMatrix(mat Matrix3) {
 	C.quaternion_from_rotation_matrix(quat.cptr, &m)
 }
 
-func (quat *Quaternion) FromValues(w, x, y, z float32) Quaternion {
+func CreateQuaternionFromValues(w, x, y, z float32) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_from_values(C.coiReal(w), C.coiReal(x), C.coiReal(y), C.coiReal(z))
 	return result	
