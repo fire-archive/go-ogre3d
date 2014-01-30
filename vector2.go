@@ -25,6 +25,12 @@ func CreateVector2FromValues(x float32, y float32) (Vector2) {
 	return result
 }
 
+func (vec *Vector2) MultiplyVector2(rhs Vector2) (Vector2) {
+	var result Vector2
+	result.cptr = C.vector2_multiply_vector2(vec.cptr, rhs.cptr)
+	return result
+}
+
 func (vec *Vector2) MultiplyScalar(real float32) (Vector2) {
 	var result Vector2
 	result.cptr = C.vector2_multiply_scalar(vec.cptr, C.coiReal(real))
