@@ -19,6 +19,18 @@ func CreateVector3() (Vector3) {
 	return result
 }
 
+func (vec *Vector3) X() (float32) {
+	return float32(C.vector3_x(vec.cptr))
+}
+
+func (vec *Vector3) Y() (float32) {
+	return float32(C.vector3_y(vec.cptr))
+}
+
+func (vec *Vector3) Z() (float32) {
+	return float32(C.vector3_z(vec.cptr))
+}
+
 func (vec *Vector3) SetX(real float32) {
 	C.vector3_set_x(vec.cptr, C.coiReal(real))
 }
