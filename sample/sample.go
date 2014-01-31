@@ -1,4 +1,4 @@
-package main 
+package main
 
 /*
  #cgo LDFLAGS: -lllcoi
@@ -6,19 +6,19 @@ package main
 import "C"
 
 import (
-	"time"
 	"github.com/fire/go-ogre3d"
+	"time"
 )
 
 func main() {
 	// CONFIGURATION
 	root := ogre.NewRoot("", "", "ogre.log")
-        root.LoadPlugin("RenderSystem_GL")
-        rs := root.GetRenderSystemByName("OpenGL Rendering Subsystem")
-        rs.SetConfigOption("Full Screen", "No")
-        rs.SetConfigOption("VSync", "No")
-        rs.SetConfigOption("Video Mode", "800 x 600 @ 32-bit")
-        root.SetRenderSystem(rs)
+	root.LoadPlugin("RenderSystem_GL")
+	rs := root.GetRenderSystemByName("OpenGL Rendering Subsystem")
+	rs.SetConfigOption("Full Screen", "No")
+	rs.SetConfigOption("VSync", "No")
+	rs.SetConfigOption("Video Mode", "800 x 600 @ 32-bit")
+	root.SetRenderSystem(rs)
 
 	// VIEW
 	window := root.Initialise(true, "go-ogre3d sample")
@@ -48,7 +48,7 @@ func main() {
 	headnode.Attach(head)
 	light := sm.CreateLight("MyLight")
 	light.SetPosition(20, 80, 50)
-	
+
 	// INPUT
 	i := ogre.NewInput(window)
 	kb := i.NewKeyboard(false)
@@ -67,7 +67,7 @@ func main() {
 
 		// KEYBOARD CONTROLS
 		kb.Capture()
-		if kb.KeyDown(ogre.KC_LEFT){
+		if kb.KeyDown(ogre.KC_LEFT) {
 			headnode.Yaw(-0.1, ogre.TS_LOCAL)
 		}
 		if kb.KeyDown(ogre.KC_RIGHT) {
@@ -87,12 +87,11 @@ func main() {
 		// MOUSE CONTROLS
 		m.Capture()
 		ms := m.State()
-		headnode.Yaw(0.01 * float32(ms.X.Rel), ogre.TS_WORLD)
-		headnode.Pitch(0.01 * float32(ms.Y.Rel), ogre.TS_WORLD)
-		if  ms.ButtonPressed(ogre.MB_Left) {
+		headnode.Yaw(0.01*float32(ms.X.Rel), ogre.TS_WORLD)
+		headnode.Pitch(0.01*float32(ms.Y.Rel), ogre.TS_WORLD)
+		if ms.ButtonPressed(ogre.MB_Left) {
 			headnode.ResetOrientation()
 		}
-
 
 		// RENDER SCENE
 		if error := root.RenderOneFrame(); error == false {

@@ -12,7 +12,7 @@ type Mouse struct {
 
 type Axis struct {
 	Abs, Rel int
-	AbsOnly bool
+	AbsOnly  bool
 }
 
 type MouseState struct {
@@ -21,8 +21,9 @@ type MouseState struct {
 }
 
 type MouseButtonId uint8
+
 const (
-	_ = iota // skip 0
+	_                     = iota // skip 0
 	MB_Left MouseButtonId = iota
 	MB_Right
 	MB_Middle
@@ -34,22 +35,22 @@ const (
 )
 
 func (ms *MouseState) ButtonPressed(b MouseButtonId) bool {
-	return ms.buttons & b == b
+	return ms.buttons&b == b
 }
 
 func goMouseState(s *C.MouseState) MouseState {
 	return MouseState{
-		X: goAxis(&s.X),
-		Y: goAxis(&s.Y),
-		Z: goAxis(&s.Z),
+		X:       goAxis(&s.X),
+		Y:       goAxis(&s.Y),
+		Z:       goAxis(&s.Z),
 		buttons: MouseButtonId(s.buttons),
 	}
 }
 
 func goAxis(a *C.Axis) Axis {
 	return Axis{
-		Abs: int(a.abs),
-		Rel: int(a.rel),
+		Abs:     int(a.abs),
+		Rel:     int(a.rel),
 		AbsOnly: gobool(a.absOnly),
 	}
 }
@@ -59,7 +60,7 @@ func (m *Mouse) State() MouseState {
 	return goMouseState(&cms)
 }
 
-func (m *Mouse) DisplayArea (width, height int) {
+func (m *Mouse) DisplayArea(width, height int) {
 	C.mouse_set_display_area(m.cptr, C.int(width), C.int(height))
 }
 
@@ -71,7 +72,7 @@ func (m *Mouse) Buffered(b bool) {
 	C.mouse_set_buffered(m.cptr, cbool(b))
 }
 
-/* 
+/*
 type MouseMovedEventHandler func(e MouseState, userdata interface{})bool
 type MousePressedEventHandler func(e MouseState, b MouseButtonId, userdata interface{})bool
 type MouseReleasedEventHandler func(e MouseState, b MouseButtonId, userdata interface{})bool

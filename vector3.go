@@ -13,21 +13,21 @@ type Vector3 struct {
 	cptr C.Vector3Handle
 }
 
-func CreateVector3() (Vector3) {
+func CreateVector3() Vector3 {
 	var result Vector3
-	result.cptr = C.vector3_create()	
+	result.cptr = C.vector3_create()
 	return result
 }
 
-func (vec *Vector3) X() (float32) {
+func (vec *Vector3) X() float32 {
 	return float32(C.vector3_x(vec.cptr))
 }
 
-func (vec *Vector3) Y() (float32) {
+func (vec *Vector3) Y() float32 {
 	return float32(C.vector3_y(vec.cptr))
 }
 
-func (vec *Vector3) Z() (float32) {
+func (vec *Vector3) Z() float32 {
 	return float32(C.vector3_z(vec.cptr))
 }
 

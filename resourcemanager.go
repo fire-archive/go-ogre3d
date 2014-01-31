@@ -1,6 +1,6 @@
 package ogre
 
-/* 
+/*
  #cgo LDFLAGS: -lllcoi
  #include "llcoi/ogre_interface.h"
 */
@@ -20,6 +20,6 @@ func (rgm *ResourceGroupManager) AddResourceLocation(location, locationType, gro
 	C.resourcegroupmanager_add_resource_location(rgm.cptr, C.CString(location), C.CString(locationType), C.CString(group))
 }
 
-func (rgm *ResourceGroupManager)InitialiseAllResourceGroups() {
+func (rgm *ResourceGroupManager) InitialiseAllResourceGroups() {
 	C.resourcegroupmanager_initialise_all_resourcegroups(rgm.cptr)
 }

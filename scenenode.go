@@ -1,6 +1,6 @@
 package ogre
 
-/* 
+/*
  #cgo LDFLAGS: -lllcoi
  #include "llcoi/ogre_interface.h"
 */
@@ -23,6 +23,7 @@ func (n *SceneNode) SetPosition(x, y, z float32) {
 }
 
 type TransformSpace int
+
 const (
 	TS_LOCAL TransformSpace = iota
 	TS_PARENT

@@ -1,10 +1,11 @@
 package ogre
 
-/* 
+/*
  #cgo LDFLAGS: -lllcoi
  #include "llcoi/ogre_interface.h"
 */
 import "C"
+
 type Quaternion struct {
 	cptr C.QuaternionHandle
 }
@@ -18,7 +19,7 @@ func CreateQuaternion() Quaternion {
 func CreateQuaternionFromValues(w, x, y, z float32) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_from_values(C.coiReal(w), C.coiReal(x), C.coiReal(y), C.coiReal(z))
-	return result	
+	return result
 }
 
 func (quat *Quaternion) FromRotationMatrix(mat Matrix3) {
@@ -38,47 +39,47 @@ func (quat *Quaternion) FromAngleAxis(radian float32, vec Vector3) {
 
 // Get the w component of the quaternion.
 func (quat *Quaternion) W() float32 {
-	
+
 	return float32(C.quaternion_get_w(quat.cptr))
 }
 
 // Get the x component of the quaternion.
 func (quat *Quaternion) X() float32 {
-	
+
 	return float32(C.quaternion_get_x(quat.cptr))
 }
 
 // Get the y component of the quaternion.
 func (quat *Quaternion) Y() float32 {
-	
+
 	return float32(C.quaternion_get_y(quat.cptr))
 }
 
 // Get the z component of the quaternion.
 func (quat *Quaternion) Z() float32 {
-	
+
 	return float32(C.quaternion_get_z(quat.cptr))
 }
 
-func (quat *Quaternion) MultiplyQuaternion(q Quaternion) (Quaternion) {
+func (quat *Quaternion) MultiplyQuaternion(q Quaternion) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_multiply_quaternion(quat.cptr, q.cptr)
 	return result
 }
 
-func (quat *Quaternion) MultiplyScalar(s float32) (Quaternion) {
+func (quat *Quaternion) MultiplyScalar(s float32) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_multiply_scalar(quat.cptr, C.coiReal(s))
 	return result
 }
 
-func (quat *Quaternion) SubtractQuaternion(q Quaternion) (Quaternion) {
+func (quat *Quaternion) SubtractQuaternion(q Quaternion) Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_subtract_quaternion(quat.cptr, q.cptr)
 	return result
 }
 
-func (quat *Quaternion) UnitInverse() (Quaternion) {
+func (quat *Quaternion) UnitInverse() Quaternion {
 	var result Quaternion
 	result.cptr = C.quaternion_unit_inverse(quat.cptr)
 	return result

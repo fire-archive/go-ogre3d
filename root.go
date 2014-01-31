@@ -39,7 +39,7 @@ func NewRoot(pluginsCfg, ogreCfg, logfile string) Root {
 	return result
 }
 
-func (r *Root)Destroy() {
+func (r *Root) Destroy() {
 	C.delete_root(r.cptr)
 	r.cptr = nil
 }
@@ -47,7 +47,7 @@ func (r *Root)Destroy() {
 func RootInstance() Root {
 	var result Root
 	result.cptr = C.root_singleton()
-	
+
 	return result
 }
 
@@ -73,7 +73,7 @@ func (r *Root) GetRenderSystemByName(name string) RenderSystem {
 func (r *Root) GetAvailableRenderers() RenderSystemList {
 	var result RenderSystemList
 	result.cptr = C.root_get_available_renderers(r.cptr)
-	
+
 	return result
 }
 
@@ -93,7 +93,7 @@ func (r *Root) Initialise(createWindow bool, windowTitle string) RenderWindow {
 	return result
 }
 
-func (r *Root) CreateRenderWindow(name string, width int, height int, fullScreen bool, params NameValuePairList) RenderWindow{
+func (r *Root) CreateRenderWindow(name string, width int, height int, fullScreen bool, params NameValuePairList) RenderWindow {
 	var result RenderWindow
 	result.cptr = C.create_render_window(r.cptr, C.CString(name), C.int(width), C.int(height), cbool(fullScreen), params.cptr)
 	return result
