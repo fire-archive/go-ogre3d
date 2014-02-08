@@ -63,3 +63,7 @@ func (n *SceneNode) CreateChildSceneNode(name string, translate Vector3, rotate 
 	result.cptr = C.scenenode_create_child_scenenode(n.cptr, C.CString(name), translate.cptr, rotate.cptr)
 	return result
 }
+
+func (n *SceneNode) SetOrientation(rot Quaternion) {
+	C.scenenode_set_orientation(n.cptr, C.float(rot.W()), C.float(rot.X()), C.float(rot.Y()), C.float(rot.Z()))
+} 
