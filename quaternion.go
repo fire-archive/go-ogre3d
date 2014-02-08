@@ -92,3 +92,9 @@ func (quat *Quaternion) Normalise() (length float32) {
 func (quat *Quaternion) ToAngleAxisDegree(degree *float32, axis Vector3) {
 	C.quaternion_to_angle_axis_degree(quat.cptr, C.coiDegree(*degree), axis.cptr)
 }
+
+func QuaternionSlerp(t float32, a Quaternion, b Quaternion, shortestPath bool) Quaternion {
+	var result Quaternion
+	result.cptr = C.quaternion_slerp(C.coiReal(t), a.cptr, b.cptr, cbool(shortestPath))
+	return result
+}
