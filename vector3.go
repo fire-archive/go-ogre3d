@@ -43,6 +43,34 @@ func (vec *Vector3) SetZ(real float32) {
 	C.vector3_set_z(vec.cptr, C.coiReal(real))
 }
 
+func (vec *Vector3) AddVector3(rhs Vector3) Vector3 {
+	var result Vector3
+	temp := C.vector3_add_vector3(vec.cptr, rhs.cptr)
+	result.SetX(float32(temp.x))
+	result.SetY(float32(temp.y))
+	result.SetZ(float32(temp.z))
+	return result
+}
+	
+
+func (vec *Vector3) MultiplyVector3(rhs Vector3) Vector3 {
+	var result Vector3
+	temp := C.vector3_multiply_vector3(vec.cptr, rhs.cptr)
+	result.SetX(float32(temp.x))
+	result.SetY(float32(temp.y))
+	result.SetZ(float32(temp.z))
+	return result
+}
+
+func (vec *Vector3) MultiplyScalar(real float32) Vector3 {
+	var result Vector3
+	temp := C.vector3_multiply_scalar(vec.cptr, C.coiReal(real))
+	result.SetX(float32(temp.x))
+	result.SetY(float32(temp.y))
+	result.SetZ(float32(temp.z))
+	return result
+}
+
 func (vec *Vector3) Zero() {
 	temp := C.vector3_ZERO()
 	vec.SetX(float32(temp.x))
