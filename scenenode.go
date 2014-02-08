@@ -14,12 +14,20 @@ func (n *SceneNode) Attach(e Entity) {
 	C.scenenode_attach_entity(n.cptr, e.cptr)
 }
 
+func (n *SceneNode) AttachObject(o MovableObject) {
+	C.scenenode_attach_object(n.cptr, o.cptr)
+}
+
 func (n *SceneNode) Detach(e Entity) {
 	C.scenenode_detach_entity(n.cptr, e.cptr)
 }
 
 func (n *SceneNode) SetPosition(x, y, z float32) {
 	C.scenenode_set_position(n.cptr, C.float(x), C.float(y), C.float(z))
+}
+
+func (n *SceneNode) SetVisible(visible bool) {
+	C.scenenode_set_visible(n.cptr, cbool(visible))
 }
 
 type TransformSpace int
@@ -48,4 +56,10 @@ func (n *SceneNode) Roll(radians float32, t TransformSpace) {
 
 func (n *SceneNode) ResetOrientation() {
 	C.scenenode_reset_orientation(n.cptr)
+}
+
+func (n *SceneNode) CreateChildSceneNode(name string, translate Vector3, rotate Quaternion) SceneNode {
+	var result SceneNode
+	result.cptr = C.scenenode_create_child_scenenode(n.cptr, C.CString(name), translate.cptr, rotate.cptr)
+	return result
 }
