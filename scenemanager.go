@@ -41,3 +41,21 @@ func (sm *SceneManager) CreateChildSceneNode(name string) SceneNode {
 
 	return result
 }
+
+func (sm *SceneManager) GetRootSceneNode() SceneNode{
+	var result SceneNode
+	result.cptr = C.scenemanager_get_root_scene_node(sm.cptr)
+	return result
+}
+
+func (sm *SceneManager) CreateManualObject(name string) ManualObject {
+	var result ManualObject
+	result.cptr = C.scenemanager_create_manual_object(sm.cptr, C.CString(name))
+	return result
+}
+
+func (sm *SceneManager) GetSceneNode(name string) SceneNode {
+	var result SceneNode
+	result.cptr = C.scenemanager_get_scene_node(sm.cptr, C.CString(name))
+	return result
+}
