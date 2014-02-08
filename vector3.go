@@ -51,7 +51,6 @@ func (vec *Vector3) AddVector3(rhs Vector3) Vector3 {
 	result.SetZ(float32(temp.z))
 	return result
 }
-	
 
 func (vec *Vector3) MultiplyVector3(rhs Vector3) Vector3 {
 	var result Vector3
