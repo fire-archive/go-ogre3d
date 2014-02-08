@@ -25,6 +25,10 @@ func (o *ManualObject) Begin(materialName string, opType OperationType, groupNam
 	C.manualobject_begin(o.cptr, C.CString(materialName), C.operation_type(opType), C.CString(groupName))
 }
 
+func (o *ManualObject) BeginUpdate(sectionIndex uint) {
+	C.manualobject_begin_update(o.cptr, C.size_t(sectionIndex))
+}
+
 func (o *ManualObject) Position(x, y, z float32) {
 	var v C.coiVector3
 	v.x = C.coiReal(x)
